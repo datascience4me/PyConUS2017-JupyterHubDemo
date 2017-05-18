@@ -3,10 +3,6 @@
 
 TIME=time
 
-echo
-echo "Use option -a to delete also the gcloud cluster"
-echo
-
 
 if [ "$1" = "-a" ];then
     CMD="$TIME gcloud container clusters delete --zone=$ZONE $NAMESPACE"
@@ -14,6 +10,10 @@ if [ "$1" = "-a" ];then
     eval $CMD
     exit 0
 fi
+
+echo
+echo "Use option -a to delete also the gcloud cluster"
+echo
 
 CMD="$TIME helm delete --purge $RELEASE"
 echo $CMD

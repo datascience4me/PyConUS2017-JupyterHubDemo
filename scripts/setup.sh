@@ -2,6 +2,8 @@
 
 DO_STEPS=1
 
+BUILD_CACHE="--no-cache"
+
 . .setup
 
 ## -- Functions: ---------------------------------------------
@@ -98,7 +100,7 @@ function UPGRADE_DEPLOY {
     NB_IMAGE=my-notebook
     NB_TAG=latest
 
-    DO_STEP docker build MyImageDir -t $DH_USER/$NB_IMAGE:$NB_TAG
+    DO_STEP docker build MyImageDir $BUILD_CACHE -t $DH_USER/$NB_IMAGE:$NB_TAG
 
     demo_header "... pushing our new image to docker hub"
 
@@ -132,7 +134,7 @@ function UPGRADE_DEPLOY_LARGER {
     NB_IMAGE=my-min-notebook
     NB_TAG=latest
 
-    DO_STEP docker build MyImageDir -t $DH_USER/$NB_IMAGE:$NB_TAG -f MyImageDir/Dockerfile.minimal-notebook
+    DO_STEP docker build MyImageDir $BUILD_CACHE -t $DH_USER/$NB_IMAGE:$NB_TAG -f MyImageDir/Dockerfile.minimal-notebook
 
     demo_header "... pushing our new image to docker hub"
 
@@ -226,6 +228,9 @@ while [ ! -z "$1" ]; do
 	case $1 in
 		-n) DO_STEPS=0;;
 
+		# Use caching for Docker build:
+		-c) BUILD_CACHE="";;
+
 		-1) INITIAL_SETUP;;
 		-1a) INITIAL_SETUP_a;;
 
@@ -243,30 +248,3 @@ done
 exit 0
 
 
-## -- END: ---------------------------------------------------
-
- 1117  helm upgrade $NAMESPACE -f config.yaml
- 1118  history
- 1119  cat helm_install_jh.sh 
- 1120  #helm upgrade $NAMESPACE -f config.yaml
- 1121  ls
- 1122  helm upgrade $NAMESPACE jupyterhub-v0.3.tgz -f config.yaml
- 1123  more config.yaml
- 1124  #helm upgrade $NAMESPACE jupyterhub-v0.3.tgz -f config.yaml
- 1125  helm list
- 1126  helm upgrade --help
- 1127  #helm upgrade --help
- 1128  helm upgrade v1 jupyterhub-v0.3.tgz -f config.yaml
- 1129  helm list
- 1130  history
- 1131  helm delete --purge $NAMESPACE
- 1132  helm list
- 1133  helm delete --purge v1 $NAMESPACE
- 1134  #helm delete --purge v1 $NAMESPACE
- 1135  helm list
- 1136  ./helm_install_jh.sh 
- 1137  helm list
- 1138  vi config.yaml
- 1139  helm upgrade v1 jupyterhub-v0.3.tgz -f config.yaml
- 1140  history
- 1141  history > setup.sh

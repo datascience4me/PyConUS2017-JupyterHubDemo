@@ -21,6 +21,8 @@ function INITIAL_SETUP {
     ## -- STEP: create gcloud namespace:
     demo_header "First we create a new namespace (called $(hl $NAMESPACE)) $(green in our Google Cloud account)"
     
+    demo_header "Open the Cloud Console terminal in a browser window"
+
     TIMER_start
     DO_STEP "gcloud container clusters create $NAMESPACE \
     	    --num-nodes=3 \
@@ -54,6 +56,7 @@ function INITIAL_SETUP {
     demo_header "Generate $(hl config.yaml) $(green with SSL keys, from template)"
     
     DO_STEP "cat config.yaml.template"
+    press ""
     
     DO_STEP "sed -e 's/SSL_COOKIE/$SSL_COOKIE/' -e 's/SSL_PROXY/$SSL_PROXY/' < config.yaml.template > config.yaml"
     

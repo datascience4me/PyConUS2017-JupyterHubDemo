@@ -22,9 +22,31 @@ Then run the setup script selecting the appropriate stage:
 
 ## Stage1:
 
+This stage will create a cluster of VMs to host our JupyterHub.
+
+It will then install the Kubernetes Helm tool, download the *chart* file for the JupyterHub application and "helm install" the application.
+
 ```sh
     ./scripts/setup.sh -1
 ```
+
+**NOTE**: If the helm install is run *too early* it may be necessary to rerun this step, in this case invoked with the '*-1a*' option.
+
+```sh
+          ./scripts/setup.sh -1a
+```
+
+Once this setup stage is complete, you can connect to the external-ip of your JupyterHub deployment using a browser.
+
+There is no real authentication implemented, you can enter any valid username (valid to be used as part of the pod name) and password at this point.
+
+Once logged in start a server and you should be connected to the familiar Jupyter server interface.
+
+The docker image used for the Jupyter server is jupyter/base-notebook, part of the jupyter/docker-stack github repository.
+
+This image is a Debian based 200MBy image - quite small.
+
+
 
 ## Stage2:
 

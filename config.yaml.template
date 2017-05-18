@@ -1,0 +1,12 @@
+
+hub:
+    # output of first execution of 'openssl rand -hex 32'
+    cookieSecret: "SSL_COOKIE"
+
+token:
+    # output of second execution of 'openssl rand -hex 32'
+    proxy: "SSL_PROXY"
+
+singleuser:
+    storage:
+        type: none

@@ -1,0 +1,12 @@
+
+# Set path to your kubectl and gcloud-sdk:
+#export PATH=~/usr/GCloud/bin
+
+DH_USER=dockerhub-user
+DH_PASSWD=dockerhub-passwd
+
+export RELEASE=v1
+export NAMESPACE=jupyterhub
+
+export ZONE=us-west1-b
+

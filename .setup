@@ -2,6 +2,8 @@
 # Set path to your kubectl and gcloud-sdk:
 #export PATH=~/usr/GCloud/bin
 
+. .demorc
+
 DH_USER=dockerhub-user
 DH_PASSWD=dockerhub-passwd
 

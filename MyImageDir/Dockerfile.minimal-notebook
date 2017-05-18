@@ -4,10 +4,7 @@ ENV  NBUSER jovyan
 
 WORKDIR /home/$NBUSER/work
 
-# Clone ipython-in-depth repo:
-RUN  git clone https://github.com/ipython/ipython-in-depth ipython.ipython-in-depth
-
 # Install bash_kernel:
-ADD  requirements.minimal-notebook requirements.minimal-notebook 
-RUN  pip install -r requirements.minimal-notebook
+COPY  requirements.minimal-notebook requirements.minimal-notebook 
+RUN   pip install -r requirements.minimal-notebook
 

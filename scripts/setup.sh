@@ -1,14 +1,8 @@
 
 
-cd ~/GCLOUD_J
-
 DO_STEPS=1
 
-DH_USER=mjbright
-
 . .setup
-#RELEASE=v1
-#NAMESPACE=jhub
 
 ## -- Functions: ---------------------------------------------
 function die {

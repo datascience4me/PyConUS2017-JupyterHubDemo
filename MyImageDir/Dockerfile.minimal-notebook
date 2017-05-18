@@ -7,6 +7,7 @@ WORKDIR /home/$NBUSER/work
 # Install bash_kernel:
 COPY  requirements.minimal-notebook .
 RUN   pip install -r requirements.minimal-notebook
+RUN   python -m bash_kernel.install
 
 # Copy in an example bash notebook:
 COPY  Tutorial_Bash_Arrays.ipynb .

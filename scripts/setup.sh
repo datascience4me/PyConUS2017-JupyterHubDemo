@@ -62,6 +62,10 @@ function INITIAL_SETUP {
     
     DO_STEP "cat config.yaml"
     
+    INITIAL_SETUP_a
+}
+
+function INITIAL_SETUP_a {
     ## -- STEP: Perform initial helm install:
     
     HELM_CHART_URL="https://github.com/jupyterhub/helm-chart/releases/download/v0.3/jupyterhub-v0.3.tgz"
@@ -223,6 +227,7 @@ while [ ! -z "$1" ]; do
 		-n) DO_STEPS=0;;
 
 		-1) INITIAL_SETUP;;
+		-1a) INITIAL_SETUP_a;;
 
 		-2) UPGRADE_DEPLOY;;
 
